@@ -1,0 +1,19 @@
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	
++++ b/main.py	(date 1719321336321)
+@@ -20,9 +20,7 @@
+ class LoginScreen(Screen):
+     pass
+ 
+-class ContentNavigationDrawer(MDBoxLayout):
+-    screen_manager = ObjectProperty()
+-    nav_drawer = ObjectProperty()
++
+ conn = sqlite3.connect("Userdata.db")
+ class DiguoApp(MDApp):
+     def build(self):

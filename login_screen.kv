@@ -1,0 +1,62 @@
+<LoginScreen>:
+    name: 'login'
+
+    MDCard:
+        orientation: "vertical"
+        size_hint: .9, .8
+        padding: dp(20)
+        spacing: dp(20)
+        elevation: 5
+        pos_hint: {"center_x": .5, "center_y": .5}
+        canvas:
+            Color:
+                rgba: 0.2, 0.6, 1, 1
+            Triangle:
+                points: [0, self.height - dp(50), self.width, self.height - dp(50), self.width, self.height]
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: dp(10)
+            pos_hint: {'center_y': 0.5}
+
+            MDLabel:
+                text: 'Login'
+                halign: 'center'
+                font_style: 'H4'
+                theme_text_color: 'Custom'
+                text_color: 0, 0, 1, 1
+                pos_hint: {'center_x': 0.5}
+
+            MDTextField:
+                id: username_input
+                hint_text: 'Username'
+                icon_right: 'account'
+                icon_right_color: 1, 1, 1, 1
+                line_color_normal: 1, 1, 1, 1
+                mode: "fill"
+                size_hint_y: None
+                height: dp(50)
+                pos_hint: {'center_x': 0.5,"center_y":0.5}
+
+            MDTextField:
+                id: password_input
+                hint_text: 'Password'
+                icon_right: 'key-variant'
+                icon_right_color: 1, 1, 1, 1
+                password: True
+                line_color_normal: 1, 1, 1, 1
+                mode: "fill"
+                size_hint_y: None
+                height: dp(50)
+                pos_hint: {'center_x': 0.5}
+
+            MDRaisedButton:
+                text: 'Login'
+                on_press: app.login(username_input.text, password_input.text)
+                size_hint_y: None
+                height: dp(50)
+                theme_text_color: 'Custom'
+                text_color: 1, 1, 1, 1
+                md_bg_color: 0.2, 0.6, 1, 1
+                pos_hint: {'center_x': 0.5}
+                on_release: root.manager.current = 'home'

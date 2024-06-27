@@ -1,0 +1,83 @@
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: "#e7e4c0"
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    ripple_color: "#c5bdd2"
+    selected_color: "#0c6c4d"
+
+
+<DrawerLabelItem@MDNavigationDrawerItem>
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    focus_behavior: False
+    selected_color: "#4a4939"
+    _no_ripple_effect: True
+
+
+
+
+MDScreen:
+    name:"home"
+    MDNavigationLayout:
+
+        MDScreenManager:
+            id:screen_manager
+
+            MDScreen:
+                name:"scr 1"
+                MDTopAppBar:
+                    title: "DG-Shop"
+                    elevation: 4
+                    pos_hint: {"top": 1}
+                    md_bg_color: "#e7e4c0"
+                    specific_text_color: "#4a4939"
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+                    right_action_items:[["shopping"]]
+            MDScreen:
+                name:"scr 2"
+                MDIconButton:
+                    icon:"arrow-left"
+                    pos_hint : {"center_y":.95}
+                    user_font_size:"30sp"
+                    theme_text_color:"Custom"
+                    text_color: rgba(26,24,58,255)
+                    on_release:
+                        root.manager.transition.direction ="right"
+                        root.ids.screen_manager.current = "scr 1"
+
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            radius: (0, 16, 16, 0)
+
+            MDNavigationDrawerMenu:
+
+                DrawerClickableItem:
+                    icon: "chart-areaspline"
+                    text_right_color: "#4a4939"
+                    text: "Inventory"
+                    on_press:
+                        root.ids.screen_manager.current ="scr 2"
+                        app.create_stock_list(root)
+                        nav_drawer.set_state("close")
+
+
+
+                DrawerClickableItem:
+                    icon: "currency-usd"
+                    text: "sales"
+
+                DrawerClickableItem:
+                    icon: "notifications"
+                    right_text:"+99"
+                    text: "notifications"
+
+                MDNavigationDrawerLabel:
+                    text: "staff"
+
+                DrawerLabelItem:
+                    icon: "card-account-details"
+                    text: "Label"
+
+
